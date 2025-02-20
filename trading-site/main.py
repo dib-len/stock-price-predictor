@@ -1,6 +1,23 @@
 import yfinance as yf
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
+from fastapi import FastAPI
+import uvicorn
+import os
+from fastapi.middleware.cors import CORSMiddleware
+from dotenv import load_dotenv
+
+app = FastAPI()
+load_dotenv()
+frontend_url = os.getenv("FRONTEND_URL", "http://localhost:5173")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[frontend_url],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 def get_stock_data(ticker, period="1y"):
     stock_data = yf.Ticker(ticker)
@@ -33,5 +50,12 @@ def predict_next_close(model, df):
 
     return prediction
 
-# Temporarily testing the model
-print(predict_next_close(train_random_forest(get_stock_data("NVDA")), get_stock_data("NVDA")))
+@app.get("/predict/{ticker}")
+def predict(ticker: str):
+    stock_data = get_stock_data(ticker)
+    model = train_random_forest(stock_data)
+    predicted_price = predict_next_close(model, stock_data)
+    return {"ticker": ticker, "predicted_price": predicted_price}
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)
