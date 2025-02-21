@@ -17,7 +17,7 @@ A machine learning powered stock prediction web app that predicts stock prices u
 Essentially, **Random Forest = Better Accuracy for Stock Prediction** :P
 
 # Example!
-Here I checked Apple's stock price:
+Here I predicted the price of Apple's stock price:
 
 <img width="721" alt="Screenshot 2025-02-20 at 17 36 33" src="https://github.com/user-attachments/assets/c82fb751-10bd-48b2-85f3-07cd2d5378d2" />
 
