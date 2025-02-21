@@ -21,8 +21,6 @@ Here I checked Apple's stock price:
 
 <img width="721" alt="Screenshot 2025-02-20 at 17 36 33" src="https://github.com/user-attachments/assets/c82fb751-10bd-48b2-85f3-07cd2d5378d2" />
 
-Which seemed to be fairly accurate (for when I had run the prediction)!
-
 <img width="681" alt="Screenshot 2025-02-20 at 17 39 42" src="https://github.com/user-attachments/assets/44ec23f1-5b5a-46ef-9695-d581a9918b44" />
 
 
